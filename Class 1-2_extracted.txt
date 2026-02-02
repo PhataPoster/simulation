@@ -1,0 +1,528 @@
+Source: E:\3rd year 2nd semester\simulation\simulation\Class 1-2.pptx
+
+=== Slide 1 ===
+- Simulation Modeling and Analysis
+- Dr. Md.
+- Nasim
+- Adnan
+
+=== Slide 2 ===
+- The Nature of Simulation
+- This is a course about techniques for using computers to imitate, or simulate, the operations of various kinds of real-world facilities or processes (in other words, called systems).
+- A system is defined to be a collection of entities, e.g., people or machines, that interact together toward the accomplishment of some logical end
+- .
+
+=== Slide 3 ===
+- System
+- In practice, what is meant by “the system” depends on the objectives of a particular study. The collection of entities that comprise a system for one study might be only a subset of the overall system for another.
+- For example, if one wants to study a bank to determine the number of tellers needed to provide adequate service for customers, the system can be defined to be that portion of the bank consisting of the tellers and the customers waiting in line or being served.
+- If, on the other hand, the loan officer and the safe-deposit boxes are to be included, the definition of the system must be expanded in an obvious way.
+
+=== Slide 4 ===
+- System
+- We define the
+- state
+- of a system to be that collection of variables necessary to describe a system at a particular time, relative to the objectives of a study.
+- In a study of a bank, examples of possible state variables are the number of busy tellers, the number of customers in the bank, and the time of arrival of each customer in the bank.
+- We categorize systems to be of two types, discrete and continuous. A discrete system is one for which the state variables change instantaneously at separated points in time.
+
+=== Slide 5 ===
+- A bank is an example of a discrete system, since state variables— e.g., the number of customers in the bank—change only when a customer arrives or when a customer finishes being served and departs.
+- A continuous system is one for which the state variables change continuously with respect to time. An airplane moving through the air is an example of a continuous system, since state variables such as position can change continuously with respect to time.
+- Few systems in practice are wholly discrete or wholly continuous…
+
+=== Slide 6 ===
+- Ways to Study a System
+
+=== Slide 7 ===
+- Experiment with the Actual System vs. Experiment with a Model of the System
+- If it is possible (and cost-effective) to alter the system physically and then let it operate under the new conditions, it is probably desirable to do so, for in this case there is no question about whether what we study is valid.
+- However, it is rarely feasible to do this, because such an experiment would often be too costly or too disruptive to the system.
+
+=== Slide 8 ===
+- For example, a bank may be contemplating reducing the number of tellers to decrease costs, but actually trying this could lead to long customer delays and alienation.
+- In another way, the “system” might not even exist, but we nevertheless want to study it in its various proposed alternative configurations to see how it should be built in the first place..
+
+=== Slide 9 ===
+- Physical Model vs. Mathematical Model
+- To most people, the word “model” evokes images of clay cars in wind tunnels, cockpits disconnected from their airplanes to be used in pilot training, or miniature supertankers scurrying about in a swimming pool.
+- More examples include tabletop scale models of material-handling systems, and in at least one case a full-scale physical model of a fast-food restaurant with real (and presumably hungry) humans.
+
+=== Slide 10 ===
+- But the vast majority of models built for such purposes are mathematical, representing a system in terms of logical and quantitative relationships.
+- That system are then manipulated and changed to see how the model reacts, and thus how the system would work in reality.
+
+=== Slide 11 ===
+- Ways to Study a System
+
+=== Slide 12 ===
+- Analytical Solution vs. Simulation
+- If the model is simple enough, it may be possible to work with its relationships and quantities to get an exact, mathematical model.
+- y = m x + c
+- However, many systems are highly complex, so that valid mathematical models of them are themselves highly complex, precluding any possibility of an
+- analytical solution
+- .
+- In this case, the model must be studied by means of simulation, i.e.,
+- numerically exercising the model for the inputs in question to see how they affect the performance
+- .
+
+=== Slide 13 ===
+- We now classify simulation models along three different dimensions:
+- Static vs. Dynamic Simulation Models:
+- A static simulation model is a representation of a system at a particular time, or one that may be used to represent a system in which time simply plays no role.
+- On the other hand, a dynamic simulation model represents a system as it evolves over time, such as a conveyor system in a factory.
+
+=== Slide 14 ===
+- Deterministic vs. Stochastic Simulation Models:
+- If a simulation model does not contain any probabilistic (i.e., random) components, it is called deterministic…
+- In deterministic models, the output is “determined” once the set of input quantities and relationships in the model have been specified.
+- Many systems, however, must be modeled as having at least some random input components, and these give rise to stochastic simulation models.
+- Most
+- queueing
+- systems are modeled stochastically. Stochastic simulation models produce output that is itself random, and must therefore be treated as only an estimate of the true characteristics of the model.
+
+=== Slide 15 ===
+- Continuous
+- vs.
+- Discrete
+- Simulation
+- Models
+- :
+- It should be mentioned that a discrete model is not always used to model a discrete system, and vice versa.
+
+=== Slide 16 ===
+- DISCRETE-EVENT SIMULATION
+- Discrete-event simulation concerns the modeling of a system as it evolves over time by a representation in which the state variables change instantaneously at separate points in time.
+- Although discrete-event simulation could conceptually be done by hand calculations, the amount of data that must be stored and manipulated for most real-world systems dictates that discrete-event simulations be done on a digital computer.
+
+=== Slide 17 ===
+- Consider a service facility with a single server—e.g., a one-operator barbershop or an information desk at an airport—for which we would like to estimate the (expected) average delay in queue (line) of arriving customers, where the delay in queue is the length of the time interval from his arrival at the facility to he begins being served.
+- For the objective of estimating the average delay of a customer, the state variables for a discrete-event simulation model of the facility would be the status of the server, i.e., either idle or busy, the number of customers waiting in queue to be served (if any), and the time of arrival of each person waiting in queue.
+
+=== Slide 18 ===
+- Components and Organization of a Discrete-Event Simulation Model
+- System state:
+- The collection of state variables necessary to describe the system at a particular time
+- Simulation clock:
+- A variable giving the current value of simulated time
+- Event list:
+- A list containing the next time when each type of event will occur
+- Statistical counters:
+- Variables used for storing statistical information about system performance
+- Initialization routine:
+- A subprogram to initialize the simulation model at time 0
+
+=== Slide 19 ===
+- Timing routine:
+- A subprogram that determines the next event from the event list and then advances the simulation clock to the time when that event is to occur
+- Event routine:
+- A subprogram that updates the system state when a particular type of event occurs
+- Library routines:
+- A set of subprograms used to generate random observations from probability distributions that were determined as part of the simulation model
+
+=== Slide 20 ===
+(no extractable text)
+
+=== Slide 21 ===
+- A system is a well-defined collection of entities. Entities are characterized by data values called attributes, and these attributes are part of the system state for a discrete-event simulation model.
+- The server has the attribute “server status” (busy or idle), and the customers waiting in queue have the attribute “time of arrival.” (The number of customers in the queue might also be considered an attribute of the server.)
+
+=== Slide 22 ===
+- SIMULATION OF A SINGLE-SERVER QUEUEING SYSTEM
+- We now show in detail how to simulate a single-server
+- queueing
+- system such as a one-operator barbershop.
+- Although this system seems very simple compared with those usually of real interest, how it is simulated is actually quite representative of the operation of simulations of great complexity.
+
+=== Slide 23 ===
+- Problem Statement
+- Consider a single-server
+- queueing
+- system (see the next Figure) for which the
+- interarrival
+- times A
+- 1
+- , A
+- 2
+- , . . . are independent and identically distributed (IID) random variables.
+- “Identically distributed” means that the
+- interarrival
+- times have the same probability distribution.
+- A customer who arrives and finds the server idle enters service immediately, and the service times S
+- 1
+- , S
+- 2
+- , . . . of the successive customers are IID random variables that are independent of the
+- interarrival
+- times.
+
+=== Slide 24 ===
+(no extractable text)
+
+=== Slide 25 ===
+- A customer who arrives and finds the server busy joins the end of a single queue. Upon completing service for a customer, the server chooses a customer from the queue (if any) in a first-in, first out (FIFO) manner.
+- The simulation will begin in the “empty-and-idle” state; i.e., no customers are present and the server is idle.
+- At time 0, we will begin waiting for the arrival of the first customer, which will occur after the first
+- interarrival
+- time, A
+- 1,
+- rather than at time 0 (which would be a possibly valid, but different, modeling assumption).
+
+=== Slide 26 ===
+- We wish to simulate this system until a
+- fixed number (
+- n
+- ) of customers have completed their delays
+- in queue.
+- Note that the time the simulation ends is thus a random variable, depending on the observed values for the
+- interarrival
+- and service-time random variables.
+
+=== Slide 27 ===
+- To measure the performance of this system, we will look at estimates of three quantities. First, we will estimate the expected average delay in queue of the
+- n
+- customers
+- completing their delays
+- during the simulation; we denote this quantity by
+- d(n).
+- The word “expected” in the definition of
+- d(n)
+- means this: on a given run of the simulation, the average delay observed of the
+- n
+- customers depends on the interarrival and service-time random variables.
+
+=== Slide 28 ===
+- On another run of the simulation (or on a different day for the real system) there would probably be arrivals at different times, and the service times required would also be different; this would give a different value for the average of the
+- n
+- delays.
+- Thus, the average delay on a given run of the simulation is properly regarded as a random variable itself.
+- From a single run of the simulation resulting in customer delays
+- D
+- 1
+- , D
+- 2
+- , . . . ,
+- D
+- n
+- , an obvious
+- estimator of
+- d(n)
+- is:
+
+=== Slide 29 ===
+- which is just the average of the
+- n D
+- i
+- ’s that were observed in the simulation.
+
+=== Slide 30 ===
+- While an estimate of
+- d(n)
+- gives information about system performance from the customers’ point of view, the management of such a system may want different information.
+- Since most real simulations are quite complex and may be time-consuming to run, we usually collect many output measures of performance, describing different aspects of system behavior.
+
+=== Slide 31 ===
+- One such measure for our simple model here is the expected average number of customers in the queue (but not being served), denoted by
+- q(n)…
+
+=== Slide 32 ===
+- This is a different kind of “average” than the average delay in queue, because it is taken over (continuous) time, rather than over customers (being discrete).
+- Thus, we need to define what is meant by this time-average number of customers in queue.
+- To do this, let
+- Q(t)
+- denote the number of customers in queue at time
+- t,
+- for any real number
+- t
+- >= 0, and let
+- T(n)
+- be the time required to observe our
+- n
+- delays in queue.
+
+=== Slide 33 ===
+- Then for any time
+- t
+- between 0 and
+- T
+- (
+- n
+- ),
+- Q
+- (
+- t
+- ) is a nonnegative integer. Further, if we let
+- p
+- b
+- e the expected
+- proportion
+- (which will be between 0 and 1) of the time that
+- Q
+- (
+- t
+- ) is equal to
+- i
+- , then a reasonable definition of
+- q
+- (
+- n
+- ) would be:
+
+=== Slide 34 ===
+- If we let
+- T
+- i
+- be the total time during the simulation that the queue is of length
+- i
+- , then
+- T
+- (
+- n
+- ) =
+- T
+- 0
+- +
+- T
+- 1
+- +
+- T
+- 2
+- + ∙ ∙ ∙ and
+- pi
+- =
+- T
+- i
+- /
+- T
+- (
+- n
+- ) so that we can rewrite the above equation as:
+
+=== Slide 35 ===
+- The next figure illustrates a possible time path, or realization, of
+- Q
+- (
+- t
+- ) for this system in the case of
+- n
+- = 6.
+- Arrivals occur at times 0.4, 1.6, 2.1, 3.8, 4.0, 5.6, 5.8, and 7.2. Departures (service completions) occur at times 2.4, 3.1, 3.3, 4.9, and 8.6, and the simulation ends at time
+- T
+- (6) = 8.6.
+
+=== Slide 36 ===
+(no extractable text)
+
+=== Slide 37 ===
+- Remember in looking at the previous figure that
+- Q
+- (
+- t
+- ) does not count the customer in service (if any), so between times 0.4 and 1.6 there is one customer in the system being served, even though the queue is empty [
+- Q
+- (
+- t
+- ) = 0].
+- The same is true between times 3.1 and 3.3, between times 3.8 and 4.0, and between times 4.9 and 5.6.
+- Between times 3.3 and 3.8, however, the system is empty of customers and the server is idle, as is obviously the case between times 0 and 0.4.
+- To compute
+- q
+- (
+- n
+- ), we must first compute the
+- T
+- i
+- ’s over which
+- Q
+- (
+- t
+- ) is equal to 0, 1, 2, and so on:
+
+=== Slide 38 ===
+- and so our estimate of the time-average number in queue from this particular simulation run is
+- q
+- ˆ(6) = 9.9/8.6 = 1.15
+
+=== Slide 39 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- We shall now see how simulation can be used to compare alternative ordering policies for an inventory system.
+- Problem Statement:
+- A company that sells a single product which is important enough to its customers would like to decide
+- how many items it should have in inventory
+- for each of the next n months (n is a fixed input parameter).
+- The times between demands are
+- IID exponential random variables with a mean of 0.1 month
+- .
+
+=== Slide 40 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- Problem Statement:
+- The sizes of the demands, D, are random variables (independent of when the demands occur), with
+
+=== Slide 41 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- Problem Statement:
+- At the beginning of each month, the company reviews the inventory level
+- and decides how many items to order from its supplier.
+- If the company orders Z items, it incurs a cost of
+- K+iZ
+- , where K = $32 is the setup cost and
+- i
+- = $3 is the incremental cost per item ordered (If Z = 0, no cost is incurred).
+- When an order is placed, the time required for it to arrive (called the delivery lag or lead time) is a random variable that is distributed uniformly between 0.5 and 1 month.
+
+=== Slide 42 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+
+=== Slide 43 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- The company uses a stationary (s, S) policy to decide how much to order, i.e.,
+- where I is the inventory level at the beginning of the month
+
+=== Slide 44 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- When a demand occurs, it is satisfied immediately if the inventory level is at least as large as the demand.
+- If the demand exceeds the inventory level, the excess of demand over supply is backlogged and satisfied by future deliveries (in this case, the new inventory level is equal to the old inventory level minus the demand size, resulting in a negative inventory level).
+- When an order arrives, it is first used to eliminate as much of the backlog (if any) as possible; the remainder of the order (if any) is added to the inventory.
+
+=== Slide 45 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- So far, we have discussed only one type of cost incurred by the inventory system, the ordering cost.
+- However, most real inventory systems also have two additional types of costs,
+- holding
+- and
+- shortage
+- costs, which we discuss after introducing some additional notation.
+- Let I(t) be the inventory level at time t [note that I(t) could be positive, negative, or zero]
+- Let I
+- +
+- (t) = max{I(t), 0} be the number of items physically on hand in the inventory at time t [note that I
+- +
+- (t) >= 0}]; and let I
+- -
+- (t) = max{-I(t), 0} be the backlog at time t [I
+- -
+- (t) >= 0 as well].
+- A possible realization of I(t), I
+- +
+- (t), and I
+- -
+- (t) is shown in the next figure. The time points at which I(t) decreases are the ones at which demands occur.
+
+=== Slide 46 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+
+=== Slide 47 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- For our model, we shall assume that the company incurs a
+- holding cost
+- of h = $1 per item per month held in (positive) inventory.
+- The holding cost includes such costs as warehouse rental, insurance, taxes, and maintenance, as well as the opportunity cost of having capital tied up in inventory rather than invested elsewhere.
+- We have ignored in our formulation the fact that some holding costs are still incurred when I
+- +
+- (t) = 0.
+- However, since our goal is to compare ordering policies, ignoring this factor, which after all is independent of the policy used, will not affect our assessment of which policy is best.
+
+=== Slide 48 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- Now, since I
+- +
+- (t) is the number of items held in inventory at time t, the time-average (per month) number of items held in inventory for the n-month period is:
+- which is akin to the definition of the time-average number of customers in queue given previously. Thus, the average holding cost per month is
+- hI
+- ̄
+- +
+- .
+
+=== Slide 49 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- Similarly, suppose that the company incurs a
+- backlog cost
+- of π = $5 per item per month in backlog; this accounts for the cost of extra record keeping when a backlog exists, as well as loss of customers’ goodwill. The time-average number of items in backlog is:
+- so the average backlog cost per month is πĪ
+- -
+- .
+
+=== Slide 50 ===
+- SIMULATION OF AN INVENTORY SYSTEM
+- Assume that the initial inventory level is I(0) = 60 and that no order is outstanding.
+- We simulate the inventory system for n = 120 months and use the average total cost per month (which is the sum of the average ordering cost per month, the average holding cost per month, and the average shortage cost per month) to compare the following nine inventory policies:
+
+=== Slide 51 ===
+- Program Organization and Logic
+- Our model of the inventory system uses the following types of events:
+- We have chosen to make the end of the simulation event type 3 rather than type 4, since at time 120 both “end-simulation” and “inventory-evaluation” events will eventually be scheduled and we would like to execute the former event first at this time (Since the simulation is over at time 120, there is no sense in evaluating the inventory and possibly ordering, incurring an ordering cost for an order that will never arrive).
+
+=== Slide 52 ===
+- Program Organization and Logic
+- The execution of event type 3 before event type 4 is guaranteed because the timing routine gives preference to the lowest-numbered event if two or more events are scheduled to occur at the same time.
+- In general, a simulation model should be designed to process events in an appropriate order when time ties occur.
+- An event graph appears in the next Figure.
+
+=== Slide 53 ===
+- Program Organization and Logic
+
+=== Slide 54 ===
+- Program Organization and Logic
+- There are three types of random variates needed to simulate this system. The
+- interdemand
+- times are distributed exponentially.
+- The demand-size random variate D must be discrete, as described above, and can be generated as follows.
+- First divide the unit interval into the contiguous subintervals C1 = [0, 1/6], C2 = [1/6, 1/2], C3 = [1/2, 5/6] and C4 = [5/6, 1], and obtain a U(0, 1) random variate U from the random-number generator.
+
+=== Slide 55 ===
+- Program Organization and Logic
+- If U falls in C1, return D = 1; if U falls in C2, return D = 2; and so on.
+- Since the width of C1 is 1/6 - 0 = 1/6, and since U is uniformly distributed over [0, 1], the probability that U falls in C1 (and thus that we return D = 1) is 1/6; this agrees with the desired probability that D = 1.
+- Similarly, we return D = 2 if U falls in C2, having probability equal to the width of C2, 1/2 – 1/6 = 1/3, as desired; and so on for the other intervals.
+- The subprogram to generate the demand sizes uses this principle and takes as input the
+- cutoff
+- points defining the above subintervals, which are the cumulative probabilities of the distribution of D.
+
+=== Slide 56 ===
+- Program Organization and Logic
+- We now describe the logic for event types 1, 2, and 4, which actually involve state changes.
+- The order-arrival event is flowcharted in the next figure, and must make the changes necessary when an order (which was previously placed) arrives from the supplier.
+- The inventory level is increased by the amount of the order, and the order-arrival event must be eliminated from consideration.
+- A flowchart for the demand event is also given in the next figure, and processes the changes necessary to represent a demand’s occurrence.
+
+=== Slide 57 ===
+- Program Organization and Logic
+- First, the demand size is generated, and the inventory is decremented by this amount.
+- Finally, the time of the next demand is scheduled into the event list. Note that this is the place where the inventory level might become negative.
+
+=== Slide 58 ===
+- Program Organization and Logic
+
+=== Slide 59 ===
+- Program Organization and Logic
+- The inventory-evaluation event, which takes place at the beginning of each month, is flowcharted in the next figure.
+- If the inventory level I(t) at the time of the evaluation is at least s, then no order is placed, and nothing is done except to schedule the next evaluation into the event list.
+- On the other hand, if I(t) < s, we want to place an order for S - I(t) items.
+- This is done by storing the amount of the order [S - I(t)] until the order arrives, and scheduling its arrival time.
+- In this case as well, we want to schedule the next inventory-evaluation event.
+
+=== Slide 60 ===
+(no extractable text)
+
+=== Slide 61 ===
+- Program Organization and Logic
+- It is convenient to write a separate
+- nonevent
+- routine to update the continuous-time statistical accumulators which is flowcharted in the next figure.
+- The principal issue is whether we need to update the area under I
+- -
+- (t) or I
+- +
+- (t) (or neither).
+- If the inventory level since the last event has been negative, then we have been in backlog, so the area under I
+- -
+- (t) only should be updated. On the other hand, if the inventory level has been positive, we need only update the area under I
+- +
+- (t).
+- If the inventory level has been zero (a possibility), then neither update is needed.
+- The code for this routine also brings the variable for the time of the last event up to the present time. This routine will be invoked from the main program just after returning from the timing routine, regardless of the event type or whether the inventory level is actually changing at this point.
+- This provides a simple (if not the most computationally efficient) way of updating integrals for continuous-time statistics.
+
+=== Slide 62 ===
+(no extractable text)
